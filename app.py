@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, jsonify, request
 from clients.publisher import Publisher
 from clients.subscriber import Subscriber
 
@@ -10,11 +10,11 @@ publisher = Publisher()
 subscriber = Subscriber()
 
 
-@app.route('/message/<topic>', methods=['GET'])
-def get_topics(topic: str):
+@app.route('/message/<topic>')
+def get_topics(topic):
 	response = subscriber.get_topics(topic=topic)
-	print(response)
-	return response
+	print('Res:', response)
+	return jsonify(response)
 
 
 @app.route('/message', methods=['POST'])

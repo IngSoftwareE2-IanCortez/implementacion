@@ -10,9 +10,10 @@ PUBLISHER_TIMEOUT = 2000	# 20 req/sec
 class Publisher:
 	def save_topic(self, message: str, topic: str) -> str:
 		try:
-			with open(DB_NAME, mode='a') as file:
-				csvFile = csv.writer(file)
-				csvFile.writerow([message, topic])
+			with open(DB_NAME, mode='a', newline='') as file:
+				csv_file = csv.writer(file)
+				data = [message, topic]
+				csv_file.writerow(data)
 			return 'ok'
 		except Exception as e:
 			print(e)
