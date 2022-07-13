@@ -13,9 +13,11 @@ class Subscriber:
 		try:
 			with open(DB_NAME, mode='r') as file:
 				csv_file = csv.reader(file)
+
 				for linea in csv_file:
 					if linea[1] == topic:
 						res.append(linea)
 		except Exception as e:
 			print(e)
+			
 		return res

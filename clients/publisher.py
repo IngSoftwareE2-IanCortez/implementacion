@@ -15,6 +15,7 @@ class Publisher:
 				data = [message, topic]
 				csv_file.writerow(data)
 			return 'ok'
+			
 		except Exception as e:
 			print(e)
 			return 'fail'
