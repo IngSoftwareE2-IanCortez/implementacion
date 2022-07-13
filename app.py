@@ -25,7 +25,7 @@ def get_topics(topic):
 
 @app.route('/message', methods=['POST'])
 def post_topic():
-	data = request.get_json()
+	data = request.form
 	d1 = data["message"]
 	d2 = data["topic"]
 	response = publisher.save_topic(message=d1, topic=d2)
